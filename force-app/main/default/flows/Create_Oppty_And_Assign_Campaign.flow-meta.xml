@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>New_Oppty</name>
+        <label>New Oppty</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <actionName>NewOpportunity</actionName>
+        <actionType>quickAction</actionType>
+        <connector>
+            <targetReference>Campaign</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Name</name>
+            <value>
+                <stringValue>Opportunity New</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>StageName</name>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>NewOpportunity</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Update_Oppty</name>
+        <label>Update Oppty</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <actionName>Opportunity.Update_Oppty</actionName>
+        <actionType>quickAction</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contextId</name>
+            <value>
+                <stringValue>{!New_Oppty}.Id</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>CampaignId</name>
+        </inputParameters>
+        <nameSegment>Opportunity.Update_Oppty</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <description>Creates an Oppty, and then assignes a campaign</description>
+    <environments>Default</environments>
+    <interviewLabel>Create Oppty And Assign Campaign {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Oppty And Assign Campaign</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <description>I will add a Campaign</description>
+        <name>Campaign</name>
+        <label>Campaign</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Oppty</targetReference>
+        </connector>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>What am I doing</description>
+        <name>Prompt</name>
+        <label>Prompt</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>New_Oppty</targetReference>
+        </connector>
+        <fields>
+            <name>Start</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <stringValue>I will create an Opportunity</stringValue>
+            </defaultValue>
+            <fieldText>Start</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Prompt</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>
