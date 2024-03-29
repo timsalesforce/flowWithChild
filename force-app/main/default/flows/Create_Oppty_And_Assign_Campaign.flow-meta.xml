@@ -41,6 +41,12 @@
             </value>
         </inputParameters>
         <inputParameters>
+            <name>StageName</name>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
             <name>CampaignId</name>
         </inputParameters>
         <nameSegment>Opportunity.Update_Oppty</nameSegment>
