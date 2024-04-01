@@ -9,4 +9,4 @@
 6. Click the Next button again
 
 ## Observation: The flow remains on the page, and the StageName and CampaignId fields are still blank
-## Expectation: The flow should disappear due to visibility rule on StageName and the StageName and CampaignId fields should be populated with the right values: StageName = "Needs Assessment", CampaignId = <the campaign you created>
+## Expectation: The flow should disappear due to visibility rule on StageName and the StageName and CampaignId fields should be populated with the right values: StageName = "Needs Assessment", CampaignId = the campaignId you created
